@@ -9,7 +9,6 @@ bot = Bot(token=settings.bots.bot_token,
           parse_mode='HTML')
 
 dp = Dispatcher()
-
 # Включение и выключение бота
 
 
