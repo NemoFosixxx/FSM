@@ -1,1 +1,9 @@
-from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, KeyboardButtonPollType
+
+star_keyboard = ReplyKeyboardMarkup(keyboard=[
+    [
+        KeyboardButton(
+            text='⭐️Получить звёздочку⭐️'
+        )
+    ]
+])

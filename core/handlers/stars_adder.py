@@ -12,7 +12,7 @@ class star_class():
 
     async def cmd_star(message: types.Message, bot: Bot):
         if message.from_user.id == settings.bots.admin_id:
-            await message.answer("Приветствую, О ВЕЛИКИЙ МОДЕРАТОР, Что хотите добавить?",
+            await message.answer("👳🏿Приветствую, О ВЕЛИКИЙ МОДЕРАТОР, Что хотите добавить?",
                                  reply_markup=get_inline_keyboard())
 
     async def get_func(callback_query: types.CallbackQuery, state: FSMContext):
