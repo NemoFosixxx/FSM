@@ -4,10 +4,10 @@ from aiogram import Bot, Dispatcher, types, F
 from aiogram.filters.command import Command
 from core.handlers.basic import basic_class
 from core.handlers.stars_adder import star_class
-from core.handlers.stars_sender import star_accept
+from core.handlers.stars_sender import star_accept, image_sender
 from core.settings import settings
 from core.utils.statesform import StepsForm
-from core.keyboards.inline import get_inline_keyboard
+
 logging.basicConfig(level=logging.INFO)
 bot = Bot(token=settings.bots.bot_token,
           parse_mode='HTML')
@@ -31,6 +31,7 @@ async def main():
     dp.message.register(star_class.add_star, StepsForm.ADD_STAR)
     dp.message.register(star_class.add_image, StepsForm.ADD_IMAGE)
     dp.message.register(star_accept)
+    dp.message.register(image_sender, Command("photo"))
 
     try:
         await dp.start_polling(bot)

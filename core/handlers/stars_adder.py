@@ -3,7 +3,7 @@ from core.settings import settings
 from aiogram.fsm.context import FSMContext
 from core.utils.statesform import StepsForm
 from core.keyboards.inline import get_inline_keyboard
-
+from aiogram.types import Message, FSInputFile, InputMediaPhoto
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 
@@ -23,8 +23,10 @@ class star_class():
             await callback_query.answer('Какую картинку добавить?')
             await state.set_state(StepsForm.ADD_IMAGE)
 
-    async def add_image(message: types.Message, state: FSMContext):
-        await message.answer("здесь должен быть функционал")
+    async def add_image(message: types.Message, state: FSMContext, bot: Bot):
+        await message.answer('Картинка сохранена!')
+        file = await bot.get_file(message.photo[-1].file_id)
+        await bot.download_file(file.file_path, 'core\images\image.png')
         await state.clear()
 
     async def add_star(message: types.Message, state: FSMContext):
