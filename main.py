@@ -7,6 +7,7 @@ from core.handlers.stars_adder import star_class
 from core.handlers.stars_sender import star_accept
 from core.settings import settings
 from core.utils.statesform import StepsForm
+from core.keyboards.inline import get_inline_keyboard
 logging.basicConfig(level=logging.INFO)
 bot = Bot(token=settings.bots.bot_token,
           parse_mode='HTML')
@@ -26,8 +27,9 @@ async def main():
     dp.shutdown.register(basic_class.stop_bot)
     dp.message.register(basic_class.cmd_start, Command("start"))
     dp.message.register(star_class.cmd_star, Command("add"))
-    dp.message.register(star_class.get_func, StepsForm.GET_FUNCTION)
+    dp.callback_query.register(star_class.get_func)
     dp.message.register(star_class.add_star, StepsForm.ADD_STAR)
+    dp.message.register(star_class.add_image, StepsForm.ADD_IMAGE)
     dp.message.register(star_accept)
 
     try:
