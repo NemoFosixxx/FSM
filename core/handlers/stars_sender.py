@@ -37,5 +37,5 @@ async def star_accept(message: types.Message, bot: Bot):
 
 async def image_sender(message: types.Message, bot: Bot):
     photo = InputMediaPhoto(
-        type='photo', media=FSInputFile(f'core\images\image.png'))
-    await bot.send_photo(1048810471, photo)  # 5286076490
+        type='photo', media=FSInputFile('D:\Telegram Bots\FSM\core\images\image.png'))
+    await bot.send_photo(message.chat.id, photo=photo)  # 5286076490
